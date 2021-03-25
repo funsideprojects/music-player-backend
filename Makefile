@@ -5,4 +5,4 @@ start:
 	go run server.go
 
 dev:
-	gin -p 3000 run server.go
+	gin -appPort 3000 --all -i run server.go
