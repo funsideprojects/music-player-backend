@@ -4,7 +4,6 @@
 html,
 body {
   @apply w-full h-full;
-  font-family: 'Josefin Sans', sans-serif;
   scroll-behavior: smooth;
   /* Disable web page navigation on swipe(back and forward) */
   /* overscroll-behavior-x: none; */

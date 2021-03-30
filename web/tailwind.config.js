@@ -8,6 +8,10 @@ module.exports = {
     container: {
       center: true,
     },
+    fontFamily:{
+      sans: ['Josefin Sans', 'serif'],
+      serif: ['serif']
+    },
     spacing: {
       '0': '0px',
       '4': '4px',
