@@ -4,3 +4,5 @@ node_modules
 # Cassandra configs from ext
 .cassandraWorkbench
 .cassandraWorkbench.jsonc
+
+/web/source_idea/
