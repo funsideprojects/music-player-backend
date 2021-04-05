@@ -49,6 +49,10 @@
     color: #bfbfbf;
 }
 
+.login-wrapper > div:nth-child(3) {
+    @apply mt-20;
+}
+
 .help-link {
     @apply mt-12;
     text-align: right;

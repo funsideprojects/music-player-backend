@@ -10,7 +10,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Josefin Sans', 'sans-serif'],
-      serif: ['serif'],
+      serif: ['serif']
     },
     spacing: {
       '0': '0px',
