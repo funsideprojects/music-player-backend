@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 import './login.css';
 
-const Login = () => {
+const Login = (props: any) => {
     // initial state
     const [state, setState] = useState<any>(null);
     const [isError, setIsError] = useState<boolean>(false);
