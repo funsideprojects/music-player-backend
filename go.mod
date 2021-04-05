@@ -8,6 +8,7 @@ require (
 	github.com/gorilla/websocket v1.4.2
 	github.com/labstack/echo/v4 v4.2.1
 	github.com/mattn/go-colorable v0.1.8 // indirect
+	github.com/pelletier/go-toml v1.8.1 // indirect
 	github.com/spf13/viper v1.7.1
 	github.com/vektah/gqlparser/v2 v2.1.0
 	go.mongodb.org/mongo-driver v1.5.1

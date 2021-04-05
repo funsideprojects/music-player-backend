@@ -26,7 +26,7 @@ docker-compose -f docker-compose.yml -f docker-compose.production.yml --env-file
 
 ## Useful libs
 
-- [gin](github.com/codegangsta/gin): Live reload
+- [air](https://github.com/cosmtrek/air): Live reload
 - [websoket](github.com/gorilla/websocket)
 - [web framework](github.com/labstack/echo)
 

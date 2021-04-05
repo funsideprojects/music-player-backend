@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	"fsp/open-music/identity/graph"
 	"fsp/open-music/identity/graph/generated"
@@ -29,9 +29,9 @@ func main() {
 
 	// Middlewares
 	// Tags to construct the logger format: https://echo.labstack.com/middleware/logger
-	// e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-	// 	Format: "method = ${method}, status = ${status}, latency = ${latency_human}\n",
-	// }))
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Format: "method = ${method}, status = ${status}, latency = ${latency_human}\n",
+	}))
 	e.Use(middleware.Recover())
 
 	// GraphQL Server init
@@ -51,6 +51,6 @@ func main() {
 	// 	return context.String(http.StatusOK, "Welcome!")
 	// })
 
-	fmt.Println(colors.Success("[Identity]")+" Server started at port:", port)
+	log.Println(colors.Success("[Identity]")+" Server started at port:", port)
 	e.Logger.Fatal(e.Start(":" + port))
 }
