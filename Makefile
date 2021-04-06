@@ -6,7 +6,7 @@ docker-devup:
 docker-devdown:
 	docker-compose -f docker-compose.yml -f docker-compose.dev.yml --env-file ./.env.development down
 
-# Identity
+# * Identity
 build-identity:
 	go build -o identity/.air/main identity/server.go
 dev-identity:

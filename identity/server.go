@@ -5,6 +5,7 @@ import (
 
 	"fsp/open-music/identity/graph"
 	"fsp/open-music/identity/graph/generated"
+
 	"fsp/open-music/packages/colors"
 	"fsp/open-music/packages/database"
 	"fsp/open-music/packages/env"
@@ -27,14 +28,37 @@ func main() {
 	e.HideBanner = true
 	e.HidePort = true
 
-	// Middlewares
-	// Tags to construct the logger format: https://echo.labstack.com/middleware/logger
+	// ? Middlewares
+	// Limit body size - https://echo.labstack.com/middleware/body-limit
+	e.Use(middleware.BodyLimit("2MB"))
+
+	// Cors - https://echo.labstack.com/middleware/cors
+	corsWhitelist := env.GetEnv("WEB_URL")
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{corsWhitelist},
+	}))
+
+	// CSRF - https://echo.labstack.com/middleware/csrf
+
+	// Request Rate limit - https://echo.labstack.com/middleware/rate-limiter
+	e.Use(middleware.RateLimiter(middleware.NewRateLimiterMemoryStore(20)))
+
+	// Tags to construct the logger format - https://echo.labstack.com/middleware/logger
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Format: "method = ${method}, status = ${status}, latency = ${latency_human}\n",
 	}))
-	e.Use(middleware.Recover())
 
-	// GraphQL Server init
+	// Recover from panic - https://echo.labstack.com/middleware/recover
+	e.Use(middleware.RecoverWithConfig(middleware.RecoverConfig{
+		StackSize:         1 << 10, // 1 KB
+		DisableStackAll:   false,
+		DisablePrintStack: false,
+	}))
+
+	// Auth
+	// e.Use(auth.Middleware())
+
+	// ? GraphQL
 	graphqlServer := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
 
 	e.POST("/identity", func(context echo.Context) error {

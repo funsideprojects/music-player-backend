@@ -5,11 +5,14 @@ package graph
 
 import (
 	"context"
+	"log"
+
 	"fsp/open-music/identity/graph/generated"
 	"fsp/open-music/identity/graph/model"
 )
 
 func (r *queryResolver) User(ctx context.Context) (*model.User, error) {
+	log.Print(ctx)
 	return &model.User{
 		ID:   "1",
 		Name: "Tom",

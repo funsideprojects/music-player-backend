@@ -2,13 +2,11 @@ package database
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"time"
 
 	"fsp/open-music/packages/env"
 
-	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -33,11 +31,11 @@ func MongoConnection() *mongo.Client {
 	defer client.Disconnect(ctx)
 
 	// List all databases
-	databases, err := client.ListDatabaseNames(ctx, bson.M{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(databases)
+	// databases, err := client.ListDatabaseNames(ctx, bson.M{})
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// fmt.Println(databases)
 
 	return client
 }
